@@ -145,20 +145,20 @@ export function Contact() {
           />
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 lg:items-stretch">
           {/* Left Side: Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-5"
+            className="lg:col-span-5 lg:h-full lg:flex lg:flex-col lg:min-h-0"
           >
             <motion.div
               initial="initial"
               whileHover="active"
               whileTap="active"
-              className="group relative p-6 sm:p-8 rounded-3xl bg-white/80 dark:bg-slate-900/40 backdrop-blur-2xl border border-white dark:border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.03)] dark:shadow-none overflow-hidden h-full"
+              className="group relative p-6 sm:p-8 rounded-3xl bg-white/80 dark:bg-slate-900/40 backdrop-blur-2xl border border-white dark:border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.03)] dark:shadow-none overflow-hidden lg:flex-1 lg:flex lg:flex-col lg:min-h-0 h-full"
             >
               {/* Animated Neon Border on Hover/Tap */}
               <motion.div
@@ -215,8 +215,8 @@ export function Contact() {
                 ))}
               </div>
 
-              <div className="mt-10 pt-10 border-t border-slate-100 dark:border-slate-800">
-                <h3 className="text-sm font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] mb-6 text-center lg:text-left">Social Connections</h3>
+              <div className="mt-10 pt-10 border-t border-slate-100 dark:border-slate-800 lg:mt-auto">
+                <h3 className="text-sm font-black text-slate-400 dark:text-slate-500 tracking-[0.2em] mb-6 text-center lg:text-left">Connect with me</h3>
                 <div className="flex flex-wrap justify-center lg:justify-start gap-4">
                   {socialLinks.map((social, index) => (
                     <motion.a
@@ -251,10 +251,10 @@ export function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-7"
+            className="lg:col-span-7 lg:h-full lg:flex lg:flex-col lg:min-h-0"
           >
-            <div className="p-6 sm:p-10 rounded-3xl bg-white dark:bg-slate-900/40 backdrop-blur-2xl border border-white dark:border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.03)] dark:shadow-none">
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="p-6 sm:p-10 rounded-3xl bg-white dark:bg-slate-900/40 backdrop-blur-2xl border border-white dark:border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.03)] dark:shadow-none lg:flex-1 lg:flex lg:flex-col lg:min-h-0">
+              <form onSubmit={handleSubmit} className="space-y-6 lg:flex-1 lg:flex lg:flex-col lg:min-h-0">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-1">Your Name</label>
