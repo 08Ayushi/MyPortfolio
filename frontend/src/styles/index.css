@@ -1,0 +1,77 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+@keyframes shine {
+  0% { transform: translateX(-200%); }
+  100% { transform: translateX(200%); }
+}
+
+.animate-shine {
+  animation: shine 1s ease-in-out forwards;
+}
+
+/* ---- Portfolio ambient (matches --primary / --secondary / --accent) ---- */
+.portfolio-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 85% 55% at 50% -15%, color-mix(in srgb, var(--primary) 14%, transparent), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 100% 40%, color-mix(in srgb, var(--secondary) 10%, transparent), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 0% 85%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 50%);
+}
+
+.dark .portfolio-ambient {
+  opacity: 0.75;
+}
+
+/* Subtle 3D depth: strong on fine pointer, safe tap feedback on touch */
+.card-depth {
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-depth:hover {
+    transform: translateY(-6px) rotateX(3deg) rotateY(-2deg);
+    box-shadow:
+      0 25px 50px -15px color-mix(in srgb, var(--primary) 22%, transparent),
+      0 0 0 1px color-mix(in srgb, var(--primary) 12%, transparent);
+  }
+}
+
+/* Touch / tablet: show depth without requiring hover */
+@media (hover: none), (pointer: coarse) {
+  .card-depth {
+    box-shadow:
+      0 14px 32px -12px color-mix(in srgb, var(--primary) 20%, transparent),
+      0 0 0 1px color-mix(in srgb, var(--primary) 12%, transparent);
+  }
+
+  .card-depth:active {
+    transform: scale(0.985);
+    box-shadow:
+      0 8px 20px -8px color-mix(in srgb, var(--primary) 16%, transparent);
+  }
+}
+
+/* Narrow screens: same “always on” depth (laptops in split view, tablets) */
+@media (max-width: 1023px) {
+  .card-depth {
+    box-shadow:
+      0 12px 28px -10px color-mix(in srgb, var(--primary) 18%, transparent),
+      0 0 0 1px color-mix(in srgb, var(--primary) 10%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-depth,
+  .card-depth:hover,
+  .card-depth:active {
+    transform: none !important;
+    transition: none !important;
+  }
+}
