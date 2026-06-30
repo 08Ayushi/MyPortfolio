@@ -1,9 +1,13 @@
 package com.portfolio.service;
 
 import com.portfolio.model.ContactRequest;
+import java.io.UnsupportedEncodingException;
+import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,21 +26,27 @@ public class EmailService {
     }
 
     public void sendContactMail(ContactRequest request) {
-        SimpleMailMessage message = new SimpleMailMessage();
+        try {
+            MimeMessage mimeMessage = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, false, "UTF-8");
 
-        // For Gmail SMTP, From should be your authenticated Gmail address.
-        // The visitor's email is added as Reply-To so you can directly reply to them.
-        message.setFrom(senderEmail);
-        message.setReplyTo(request.getEmail());
-        message.setTo(recipientEmail);
-        message.setSubject("Portfolio: " + request.getSubject() + " (from " + request.getName() + ")");
-        message.setText(
-                "You received a new message from your portfolio website.\n\n" +
-                        "Name: " + request.getName() + "\n" +
-                        "Email: " + request.getEmail() + "\n" +
-                        "Subject: " + request.getSubject() + "\n\n" +
-                        "Message:\n" + request.getMessage());
+            // Gmail SMTP always sends from your authenticated Gmail address.
+            // We show the visitor's name + email in the display name; Reply-To is their real address.
+            String visitorLabel = request.getName() + " (" + request.getEmail() + ")";
+            helper.setFrom(new InternetAddress(senderEmail, visitorLabel));
+            helper.setReplyTo(request.getEmail());
+            helper.setTo(recipientEmail);
+            helper.setSubject("Portfolio: " + request.getSubject() + " (from " + request.getName() + ")");
+            helper.setText(
+                    "You received a new message from your portfolio website.\n\n" +
+                            "Name: " + request.getName() + "\n" +
+                            "Email: " + request.getEmail() + "\n" +
+                            "Subject: " + request.getSubject() + "\n\n" +
+                            "Message:\n" + request.getMessage());
 
-        mailSender.send(message);
+            mailSender.send(mimeMessage);
+        } catch (MessagingException | UnsupportedEncodingException e) {
+            throw new IllegalStateException("Failed to send contact email", e);
+        }
     }
 }

@@ -1,5 +1,7 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
 import { motion } from 'motion/react';
+import { CONTACT_EMAIL, handleEmailLinkClick } from '../../constants/contact';
+import { useEmailComposeHref } from '@/app/hooks/useEmailComposeHref';
 import {
   Mail,
   Phone,
@@ -15,6 +17,8 @@ import {
 } from 'lucide-react';
 
 export function Contact() {
+  const emailCompose = useEmailComposeHref();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -32,7 +36,8 @@ export function Contact() {
     setStatusMessage('');
 
     try {
-      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
+      // Empty = same origin (works with Vite proxy + dev tunnels). Set VITE_API_BASE_URL in production.
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? '';
 
       const response = await fetch(`${apiBaseUrl}/api/contact`, {
         method: 'POST',
@@ -64,14 +69,13 @@ export function Contact() {
     }));
   };
 
-  const mailtoLink = `mailto:soniayushi2308@gmail.com?subject=${encodeURIComponent("Portfolio Contact")}&body=${encodeURIComponent("Hello Ayushi,\n\nI visited your portfolio and wanted to connect with you.\n\nRegards,")}`;
-
   const contactInfo = [
     {
       icon: Mail,
       label: 'Email',
-      value: 'soniayushi2308@gmail.com',
-      href: mailtoLink,
+      value: CONTACT_EMAIL,
+      href: emailCompose.href,
+      openInNewTab: emailCompose.openInNewTab,
       ariaLabel: 'Send email to Ayushi',
       color: 'text-purple-500',
       bgColor: 'bg-purple-500/10'
@@ -98,6 +102,7 @@ export function Contact() {
     {
       icon: Linkedin,
       href: 'https://linkedin.com/in/ayushi-soni-9b4466279',
+      openInNewTab: true,
       ariaLabel: 'View Ayushi\'s LinkedIn Profile',
       color: 'text-blue-600',
       borderColor: 'border-blue-500/20'
@@ -105,13 +110,15 @@ export function Contact() {
     {
       icon: Github,
       href: 'https://github.com/08Ayushi',
+      openInNewTab: true,
       ariaLabel: 'View Ayushi\'s GitHub Profile',
       color: 'text-slate-900 dark:text-white',
       borderColor: 'border-slate-500/20'
     },
     {
       icon: Mail,
-      href: mailtoLink,
+      href: emailCompose.href,
+      openInNewTab: emailCompose.openInNewTab,
       ariaLabel: 'Send email to Ayushi',
       color: 'text-red-500',
       borderColor: 'border-red-500/20'
@@ -183,6 +190,17 @@ export function Contact() {
                     key={info.label}
                     href={info.href}
                     aria-label={info.ariaLabel}
+                    onClick={info.label === 'Email' ? handleEmailLinkClick : undefined}
+                    target={
+                      info.openInNewTab || info.href?.startsWith('http')
+                        ? '_blank'
+                        : undefined
+                    }
+                    rel={
+                      info.openInNewTab || info.href?.startsWith('http')
+                        ? 'noopener noreferrer'
+                        : undefined
+                    }
                     initial="initial"
                     whileHover="active"
                     whileTap="active"
@@ -223,8 +241,9 @@ export function Contact() {
                       key={index}
                       href={social.href}
                       aria-label={social.ariaLabel}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      onClick={social.icon === Mail ? handleEmailLinkClick : undefined}
+                      target={social.openInNewTab ? '_blank' : undefined}
+                      rel={social.openInNewTab ? 'noopener noreferrer' : undefined}
                       initial="initial"
                       whileHover="active"
                       whileTap="active"

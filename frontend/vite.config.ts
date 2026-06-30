@@ -31,6 +31,16 @@ export default defineConfig({
     },
   },
 
+  server: {
+    // Lets /api work through the dev tunnel (port 5173) — proxies to local Spring Boot.
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+      },
+    },
+  },
+
   // File types to support raw imports. Never add .css, .tsx, or .ts files to this.
   assetsInclude: ['**/*.svg', '**/*.csv'],
 })

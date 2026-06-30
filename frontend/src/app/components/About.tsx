@@ -1,3 +1,5 @@
+import { handleEmailLinkClick } from '@/constants/contact';
+import { useEmailComposeHref } from '@/app/hooks/useEmailComposeHref';
 import { motion } from 'motion/react';
 import {
   Code2,
@@ -22,6 +24,8 @@ import {
 } from 'lucide-react';
 
 export function About() {
+  const emailCompose = useEmailComposeHref();
+
   const expertise = [
     {
       icon: Monitor,
@@ -227,24 +231,17 @@ export function About() {
               </div>
               <div className="flex gap-2">
                 {[
-                  { icon: Linkedin, color: 'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400', url: 'https://www.linkedin.com/in/ayushi-soni-9b4466279' },
-                  { icon: Github, color: 'bg-slate-50 text-slate-900 dark:bg-white/10 dark:text-white', url: 'https://github.com/08Ayushi' },
-                  { icon: Mail, color: 'bg-purple-50 text-purple-600 dark:bg-purple-500/10 dark:text-purple-400', url: 'mailto:soniayushi2308@gmail.com' }
+                  { icon: Linkedin, color: 'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400', url: 'https://www.linkedin.com/in/ayushi-soni-9b4466279', openInNewTab: true },
+                  { icon: Github, color: 'bg-slate-50 text-slate-900 dark:bg-white/10 dark:text-white', url: 'https://github.com/08Ayushi', openInNewTab: true },
+                  { icon: Mail, color: 'bg-purple-50 text-purple-600 dark:bg-purple-500/10 dark:text-purple-400', url: emailCompose.href, openInNewTab: emailCompose.openInNewTab, ariaLabel: 'Send email to Ayushi' }
                 ].map((social, i) => (
                   <motion.a
                     key={i}
-                    href={social.url.startsWith('mailto:') ? '#contact' : social.url}
-                    onClick={(e) => {
-                      if (social.url.startsWith('mailto:')) {
-                        e.preventDefault();
-                        const element = document.querySelector('#contact');
-                        if (element) {
-                          element.scrollIntoView({ behavior: 'smooth' });
-                        }
-                      }
-                    }}
-                    target={social.url.startsWith('mailto:') ? undefined : "_blank"}
-                    rel="noopener noreferrer"
+                    href={social.url}
+                    aria-label={social.ariaLabel}
+                    onClick={social.icon === Mail ? handleEmailLinkClick : undefined}
+                    target={social.openInNewTab ? '_blank' : undefined}
+                    rel={social.openInNewTab ? 'noopener noreferrer' : undefined}
                     initial="initial"
                     whileHover="active"
                     whileTap="active"
