@@ -37,7 +37,8 @@ export function Contact() {
 
     try {
       // Empty = same origin (works with Vite proxy + dev tunnels). Set VITE_API_BASE_URL in production.
-      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? '';
+      // Strip any trailing slash so we never build a "//api/contact" URL.
+      const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/+$/, '');
 
       const response = await fetch(`${apiBaseUrl}/api/contact`, {
         method: 'POST',
