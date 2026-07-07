@@ -80,8 +80,8 @@ export function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${isScrolled
-            ? 'bg-white/10 dark:bg-slate-900/5 backdrop-blur-2xl shadow-[0_10px_40px_rgba(0,0,0,0.02)] border-b border-white/10 dark:border-white/5 py-1.5'
-            : 'bg-transparent py-6'
+            ? 'bg-white/70 dark:bg-slate-950/70 backdrop-blur-2xl shadow-[0_10px_40px_rgba(0,0,0,0.06)] border-b border-indigo-100/50 dark:border-white/5 py-1.5'
+            : 'bg-white/55 dark:bg-slate-950/45 backdrop-blur-xl border-b border-white/40 dark:border-white/10 py-4'
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -138,12 +138,12 @@ export function Navbar() {
                       transition={{ delay: index * 0.05 }}
                       onClick={() => scrollToSection(link.href)}
                       className={`flex flex-col items-center gap-1.5 px-4 py-2 rounded-2xl transition-all duration-300 relative z-10 ${isActive
-                          ? 'bg-white dark:bg-slate-900/60 shadow-lg shadow-indigo-500/10'
-                          : ''
+                          ? 'bg-white dark:bg-slate-900/80 shadow-lg shadow-indigo-500/15 border border-indigo-100/60 dark:border-indigo-500/20'
+                          : 'bg-white/60 dark:bg-slate-900/50 border border-white/50 dark:border-white/10 shadow-sm backdrop-blur-sm'
                         }`}
                     >
-                      <Icon className={`w-5 h-5 transition-all duration-300 ${isActive ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400 group-hover:text-indigo-500 group-hover:scale-110'}`} />
-                      <span className={`text-[10px] font-black uppercase tracking-widest transition-colors duration-300 ${isActive ? 'text-indigo-700 dark:text-indigo-300' : 'text-slate-500 group-hover:text-indigo-600'}`}>
+                      <Icon className={`w-5 h-5 transition-all duration-300 ${isActive ? 'text-indigo-600 dark:text-indigo-400' : 'text-indigo-800/90 dark:text-indigo-200 group-hover:text-indigo-600 group-hover:scale-110'}`} />
+                      <span className={`text-[10px] font-black uppercase tracking-widest transition-colors duration-300 ${isActive ? 'text-indigo-700 dark:text-indigo-300' : 'text-indigo-950/85 dark:text-indigo-100 group-hover:text-indigo-700'}`}>
                         {link.name}
                       </span>
                     </motion.button>
