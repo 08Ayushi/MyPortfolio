@@ -16,7 +16,7 @@ export function Education() {
       institution: 'GLS University',
       location: 'Ahmedabad, Gujarat',
       duration: '2022 – 2026',
-      cgpa: '8.85/10 till Semester 7',
+      cgpa: 'CGPA: 8.75',
     },
   ];
 

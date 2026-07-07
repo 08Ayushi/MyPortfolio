@@ -9,17 +9,12 @@ import {
   Zap,
   Brain,
   User,
-  GraduationCap,
-  Briefcase,
   MapPin,
   Linkedin,
   Github,
   Mail,
-  Rocket,
-  Atom,
   Cloud,
-  Coffee,
-  Radio,
+  Layout,
   Monitor
 } from 'lucide-react';
 
@@ -34,18 +29,6 @@ export function About() {
       color: '#7C3AED'
     },
     {
-      icon: Coffee,
-      title: 'Java + Spring Boot',
-      desc: 'Building robust, secure and performance-driven APIs.',
-      color: '#4ADE80'
-    },
-    {
-      icon: Atom,
-      title: 'React.js Frontend',
-      desc: 'Responsive and interactive user interfaces.',
-      color: '#38BDF8'
-    },
-    {
       icon: Cloud,
       title: 'REST API Integration',
       desc: 'Designing and integrating RESTful APIs seamlessly.',
@@ -58,17 +41,17 @@ export function About() {
       color: '#FB923C'
     },
     {
-      icon: Radio,
-      title: 'Real-Time Applications',
-      desc: 'Real-time features using WebSocket and collaboration.',
+      icon: Layout,
+      title: 'Responsive UI Designing',
+      desc: 'Crafting clean, mobile-friendly interfaces that adapt seamlessly across devices.',
       color: '#2DD4BF'
     },
   ];
 
   const stats = [
-    { icon: Briefcase, value: '4+', label: 'Projects', sub: 'Full Stack Applications', color: '#7C3AED' },
-    { icon: GraduationCap, value: '8.85', label: 'CGPA', sub: 'B.Tech CSE AI/ML', color: '#A78BFA' },
-    { icon: Rocket, value: '2+', label: 'Internships', sub: 'Java & MEAN Stack', color: '#38BDF8' },
+    { value: '4+', label: 'Projects', sub: 'Full Stack Applications' },
+    { value: '8.75', label: 'CGPA', sub: 'B.Tech CSE AI/ML' },
+    { value: '2+', label: 'Experiences', sub: 'Java & MEAN Stack' },
   ];
 
   return (
@@ -113,16 +96,12 @@ export function About() {
             >
               {[
                 {
-                  icon: User,
-                  text: "I am a Computer Science and Engineering professional specialized in Artificial Intelligence and Machine Learning, with hands-on experience in building full-stack web applications."
-                },
-                {
                   icon: Code2,
-                  text: "I build responsive, practical, and user-focused applications using Java, Spring Boot, React.js, Node.js, Express.js, MySQL, and MongoDB."
+                  text: 'I am a Full Stack Developer with hands-on experience in Java, Spring Boot, React.js, Node.js, Django, REST APIs, MySQL, MongoDB, and SQLite. I build responsive full-stack web applications with authentication, CRUD operations, backend API integration, database design, and clean user interfaces.'
                 },
                 {
-                  icon: Layers,
-                  text: "My work includes authentication, role-based access control, REST API integration, database design, route planning, real-time collaboration, and CRUD-based application development."
+                  icon: Brain,
+                  text: 'I also have a strong interest in AI/ML and have worked with Python, Pandas, NumPy, Scikit-Learn, OpenCV, OCR, data preprocessing, and ML-based prediction features.'
                 }
               ].map((item, i) => (
                 <div key={i} className="flex gap-4 sm:gap-5 group">
@@ -149,15 +128,6 @@ export function About() {
                     i === 2 ? 'col-span-2 lg:col-span-1' : ''
                   }`}
                 >
-                  <motion.div 
-                    variants={{
-                      initial: { scale: 1 },
-                      active: { scale: 1.1 }
-                    }}
-                    className="w-8 h-8 rounded-lg bg-slate-50 dark:bg-white/5 flex items-center justify-center mx-auto mb-3"
-                  >
-                    <stat.icon className="w-4 h-4" style={{ color: stat.color }} />
-                  </motion.div>
                   <div className="text-xl font-black text-slate-900 dark:text-white leading-none mb-1">{stat.value}</div>
                   <div className="text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">{stat.label}</div>
                   <div className="text-[8px] text-slate-400 dark:text-slate-500 mt-1 line-clamp-1">{stat.sub}</div>

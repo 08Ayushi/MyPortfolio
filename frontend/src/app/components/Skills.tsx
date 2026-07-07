@@ -28,7 +28,15 @@ import {
   Leaf,
   Hexagon,
   Activity,
-  Cloud
+  Cloud,
+  Brain,
+  LineChart,
+  BarChart3,
+  Eye,
+  TrendingUp,
+  BookOpen,
+  Shield,
+  FlaskConical
 } from 'lucide-react';
 
 export function Skills() {
@@ -70,9 +78,15 @@ export function Skills() {
         { name: 'Spring Boot', icon: Leaf, iconColor: 'text-green-500' },
         { name: 'Node.js', icon: Hexagon, iconColor: 'text-green-600' },
         { name: 'Express.js', icon: Activity, iconColor: 'text-slate-500' },
+        { name: 'Flask basics', icon: FlaskConical, iconColor: 'text-slate-700' },
+        { name: 'Django', icon: Server, iconColor: 'text-emerald-600' },
         { name: 'JDBC', icon: Coffee, iconColor: 'text-red-500' },
+        { name: 'Servlets/JSP', icon: Coffee, iconColor: 'text-red-500' },
+        { name: 'Hibernate', icon: Layers, iconColor: 'text-purple-600' },
+        { name: 'JPA', icon: DbIcon, iconColor: 'text-cyan-600' },
         { name: 'REST APIs', icon: Cloud, iconColor: 'text-blue-500' },
-        { name: 'Servlets/JSP', icon: Coffee, iconColor: 'text-red-500' }
+        { name: 'JWT', icon: Shield, iconColor: 'text-indigo-600' },
+        { name: 'Authentication', icon: Shield, iconColor: 'text-violet-600' }
       ],
       color: 'from-cyan-500 to-blue-600',
       lightColor: 'text-cyan-600',
@@ -84,12 +98,49 @@ export function Skills() {
       icon: Database,
       skills: [
         { name: 'MySQL', icon: DbIcon, iconColor: 'text-blue-500' },
-        { name: 'MongoDB', icon: Leaf, iconColor: 'text-green-500' }
+        { name: 'MongoDB', icon: Leaf, iconColor: 'text-green-500' },
+        { name: 'SQLite', icon: DbIcon, iconColor: 'text-sky-600' }
       ],
       color: 'from-blue-600 to-cyan-600',
       lightColor: 'text-blue-600',
       bgColor: 'bg-blue-600/10',
       borderColor: 'border-blue-600/20'
+    },
+    {
+      title: 'AI/ML & Data',
+      icon: Brain,
+      skills: [
+        { name: 'Pandas', icon: BarChart3, iconColor: 'text-indigo-600' },
+        { name: 'NumPy', icon: LineChart, iconColor: 'text-blue-600' },
+        { name: 'Scikit-Learn', icon: Brain, iconColor: 'text-orange-600' },
+        { name: 'Matplotlib', icon: LineChart, iconColor: 'text-purple-600' },
+        { name: 'OpenCV', icon: Eye, iconColor: 'text-green-600' },
+        { name: 'OCR', icon: Eye, iconColor: 'text-cyan-600' },
+        { name: 'Data Preprocessing', icon: Activity, iconColor: 'text-slate-600' },
+        { name: 'Regression', icon: TrendingUp, iconColor: 'text-emerald-600' },
+        { name: 'Classification', icon: Layers, iconColor: 'text-violet-600' },
+        { name: 'Clustering', icon: Network, iconColor: 'text-fuchsia-600' },
+        { name: 'Model Evaluation', icon: BarChart3, iconColor: 'text-rose-600' }
+      ],
+      color: 'from-violet-500 to-fuchsia-600',
+      lightColor: 'text-violet-600',
+      bgColor: 'bg-violet-500/10',
+      borderColor: 'border-violet-500/20'
+    },
+    {
+      title: 'Deployment & Cloud',
+      icon: Cloud,
+      skills: [
+        { name: 'Vercel', icon: Cloud, iconColor: 'text-slate-800' },
+        { name: 'Render', icon: Server, iconColor: 'text-purple-600' },
+        { name: 'AWS Lambda', icon: Zap, iconColor: 'text-amber-600' },
+        { name: 'API Gateway', icon: Network, iconColor: 'text-yellow-600' },
+        { name: 'S3', icon: Cloud, iconColor: 'text-orange-600' }
+      ],
+      color: 'from-sky-500 to-indigo-600',
+      lightColor: 'text-sky-600',
+      bgColor: 'bg-sky-500/10',
+      borderColor: 'border-sky-500/20'
     },
     {
       title: 'Tools & Concepts',
@@ -103,6 +154,7 @@ export function Skills() {
         { name: 'VS Code', icon: Code2 },
         { name: 'Eclipse', icon: Circle },
         { name: 'IntelliJ IDEA', icon: Square },
+        { name: 'Jupyter Notebook', icon: BookOpen },
         { name: 'OOP', icon: Box },
         { name: 'Data Structures & Algorithms', icon: Network },
         { name: 'Collections', icon: Layers },

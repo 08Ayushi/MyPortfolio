@@ -165,7 +165,7 @@ export function Hero() {
               transition={{ delay: 0.8 }}
               className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-lg leading-relaxed font-medium text-center lg:text-justify mx-auto lg:mx-0 mt-6"
             >
-              I build high-performance, user-focused web applications using Java, Spring Boot, React.js, and modern databases.
+              I build scalable and user-focused full-stack web applications across Java, MERN, MEAN, Python, REST APIs, databases, and AI/ML-powered features.
             </motion.p>
 
             <motion.div
