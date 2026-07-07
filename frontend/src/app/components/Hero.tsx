@@ -108,17 +108,17 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-24 sm:py-20">
-        <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-12 lg:gap-16 lg:-mt-18">
+        <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-12 lg:gap-16 lg:-mt-18 items-center w-full">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-6 flex flex-col justify-center lg:pl-20 text-center lg:text-left"
+            className="lg:col-span-6 flex flex-col justify-center items-center lg:items-start w-full lg:pl-20 text-center lg:text-left"
           >
             <div className="flex flex-col gap-0">
 
-              <div className="flex flex-col items-center lg:items-start gap-1">
+              <div className="flex flex-col items-center lg:items-start gap-1 w-full">
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -143,7 +143,7 @@ export function Hero() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.6 }}
-                  className="min-h-[3rem] sm:min-h-[4rem] flex items-center mt-4 sm:mt-6"
+                  className="min-h-[3rem] sm:min-h-[4rem] flex items-center justify-center lg:justify-start w-full mt-4 sm:mt-6"
                 >
                   <span className="text-xl sm:text-3xl font-extrabold text-slate-800 dark:text-white tracking-tight">
                     {currentRole}
@@ -163,7 +163,7 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-lg leading-relaxed font-medium text-center lg:text-justify mx-auto lg:mx-0 mt-6"
+              className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-lg w-full px-2 sm:px-0 leading-relaxed font-medium text-center lg:text-justify mx-auto lg:mx-0 mt-6"
             >
               I build scalable and user-focused full-stack web applications across Java, MERN, MEAN, Python, REST APIs, databases, and AI/ML-powered features.
             </motion.p>
@@ -172,7 +172,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 }}
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 mt-10"
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 mt-10 w-full"
             >
               <motion.button
                 onClick={() => scrollToSection('#projects')}
@@ -228,14 +228,14 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="lg:col-span-6 relative flex justify-center items-center"
+            className="lg:col-span-6 relative flex justify-center items-center w-full mx-auto"
           >
-            <div className="relative group">
+            <div className="relative group mx-auto">
               {/* Multi-layered Glass Profile Container */}
-              <div className="relative p-10 group/image flex items-center justify-center">
+              <div className="relative p-4 sm:p-6 lg:p-10 group/image flex items-center justify-center mx-auto">
 
                 {/* Main Image Frame with Neon Border - Increased sizes */}
-                <div className="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-[450px] lg:h-[450px] z-10 group">
+                <div className="relative w-64 h-64 xs:w-72 xs:h-72 sm:w-96 sm:h-96 lg:w-[450px] lg:h-[450px] z-10 group mx-auto">
                   {/* Neon Glow Outer - Lighter and more vibrant */}
                   <motion.div
                     animate={{ scale: [1, 1.05, 1], opacity: [0.4, 0.7, 0.4] }}
@@ -269,7 +269,7 @@ export function Hero() {
                 </div>
 
                 {/* Glow Orbs */}
-                <div className="absolute -inset-10 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 blur-3xl -z-20 opacity-50" />
+                <div className="absolute -inset-4 sm:-inset-10 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 blur-3xl -z-20 opacity-50" />
               </div>
             </div>
           </motion.div>
