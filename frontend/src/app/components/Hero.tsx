@@ -202,7 +202,7 @@ export function Hero() {
               </motion.button>
 
               <motion.a
-                href="/Ayushi_Soni_Resume.pdf"
+                href="/Ayushi_Soni_Resume__Full_Stack_developer_.pdf"
                 download="Ayushi_Soni_Resume.pdf"
                 initial="initial"
                 whileHover="active"
